@@ -1,0 +1,14 @@
+C:\Thamaraii\CSharp\Assignments\Assignment_1\Assignment_1\Assignment_1\bin\Debug\Assignment_1.exe.config
+C:\Thamaraii\CSharp\Assignments\Assignment_1\Assignment_1\Assignment_1\bin\Debug\Assignment_1.exe
+C:\Thamaraii\CSharp\Assignments\Assignment_1\Assignment_1\Assignment_1\bin\Debug\Assignment_1.pdb
+C:\Thamaraii\CSharp\Assignments\Assignment_1\Assignment_1\Assignment_1\obj\Debug\Assignment_1.csproj.AssemblyReference.cache
+C:\Thamaraii\CSharp\Assignments\Assignment_1\Assignment_1\Assignment_1\obj\Debug\Assignment_1.csproj.CoreCompileInputs.cache
+C:\Thamaraii\CSharp\Assignments\Assignment_1\Assignment_1\Assignment_1\obj\Debug\Assignment_1.exe
+C:\Thamaraii\CSharp\Assignments\Assignment_1\Assignment_1\Assignment_1\obj\Debug\Assignment_1.pdb
+C:\Thamaraii\CSharp\Assignments\Assignment_1\bin\Debug\Assignment_1.exe.config
+C:\Thamaraii\CSharp\Assignments\Assignment_1\bin\Debug\Assignment_1.exe
+C:\Thamaraii\CSharp\Assignments\Assignment_1\bin\Debug\Assignment_1.pdb
+C:\Thamaraii\CSharp\Assignments\Assignment_1\obj\Debug\Assignment_1.csproj.AssemblyReference.cache
+C:\Thamaraii\CSharp\Assignments\Assignment_1\obj\Debug\Assignment_1.csproj.CoreCompileInputs.cache
+C:\Thamaraii\CSharp\Assignments\Assignment_1\obj\Debug\Assignment_1.exe
+C:\Thamaraii\CSharp\Assignments\Assignment_1\obj\Debug\Assignment_1.pdb
