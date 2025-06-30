@@ -1,0 +1,7 @@
+C:\Users\thamaraipriyam\source\repos\Day7CSharp\Day7CSharp\bin\Debug\Day7CSharp.exe.config
+C:\Users\thamaraipriyam\source\repos\Day7CSharp\Day7CSharp\bin\Debug\Day7CSharp.exe
+C:\Users\thamaraipriyam\source\repos\Day7CSharp\Day7CSharp\bin\Debug\Day7CSharp.pdb
+C:\Users\thamaraipriyam\source\repos\Day7CSharp\Day7CSharp\obj\Debug\Day7CSharp.csproj.AssemblyReference.cache
+C:\Users\thamaraipriyam\source\repos\Day7CSharp\Day7CSharp\obj\Debug\Day7CSharp.csproj.CoreCompileInputs.cache
+C:\Users\thamaraipriyam\source\repos\Day7CSharp\Day7CSharp\obj\Debug\Day7CSharp.exe
+C:\Users\thamaraipriyam\source\repos\Day7CSharp\Day7CSharp\obj\Debug\Day7CSharp.pdb
