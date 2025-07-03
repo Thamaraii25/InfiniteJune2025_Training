@@ -1,0 +1,7 @@
+C:\Thamaraii\CSharp\Code_Challenge\CodeChallenge_2\CodeChallenge_2\bin\Debug\CodeChallenge_2.exe.config
+C:\Thamaraii\CSharp\Code_Challenge\CodeChallenge_2\CodeChallenge_2\bin\Debug\CodeChallenge_2.exe
+C:\Thamaraii\CSharp\Code_Challenge\CodeChallenge_2\CodeChallenge_2\bin\Debug\CodeChallenge_2.pdb
+C:\Thamaraii\CSharp\Code_Challenge\CodeChallenge_2\CodeChallenge_2\obj\Debug\CodeChallenge_2.csproj.AssemblyReference.cache
+C:\Thamaraii\CSharp\Code_Challenge\CodeChallenge_2\CodeChallenge_2\obj\Debug\CodeChallenge_2.csproj.CoreCompileInputs.cache
+C:\Thamaraii\CSharp\Code_Challenge\CodeChallenge_2\CodeChallenge_2\obj\Debug\CodeChallenge_2.exe
+C:\Thamaraii\CSharp\Code_Challenge\CodeChallenge_2\CodeChallenge_2\obj\Debug\CodeChallenge_2.pdb
