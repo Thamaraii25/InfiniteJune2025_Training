@@ -1,0 +1,7 @@
+C:\Thamaraii\CSharp\Assignments\Assignment_5\Assignment_5\bin\Debug\Assignment_5.exe.config
+C:\Thamaraii\CSharp\Assignments\Assignment_5\Assignment_5\bin\Debug\Assignment_5.exe
+C:\Thamaraii\CSharp\Assignments\Assignment_5\Assignment_5\bin\Debug\Assignment_5.pdb
+C:\Thamaraii\CSharp\Assignments\Assignment_5\Assignment_5\obj\Debug\Assignment_5.csproj.AssemblyReference.cache
+C:\Thamaraii\CSharp\Assignments\Assignment_5\Assignment_5\obj\Debug\Assignment_5.csproj.CoreCompileInputs.cache
+C:\Thamaraii\CSharp\Assignments\Assignment_5\Assignment_5\obj\Debug\Assignment_5.exe
+C:\Thamaraii\CSharp\Assignments\Assignment_5\Assignment_5\obj\Debug\Assignment_5.pdb
