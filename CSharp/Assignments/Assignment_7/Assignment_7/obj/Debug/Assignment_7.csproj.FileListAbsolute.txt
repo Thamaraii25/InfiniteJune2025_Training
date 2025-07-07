@@ -1,0 +1,10 @@
+C:\Thamaraii\CSharp\Assignments\Assignment_7\Assignment_7\bin\Debug\Assignment_7.exe.config
+C:\Thamaraii\CSharp\Assignments\Assignment_7\Assignment_7\bin\Debug\Assignment_7.exe
+C:\Thamaraii\CSharp\Assignments\Assignment_7\Assignment_7\bin\Debug\Assignment_7.pdb
+C:\Thamaraii\CSharp\Assignments\Assignment_7\Assignment_7\obj\Debug\Assignment_7.csproj.AssemblyReference.cache
+C:\Thamaraii\CSharp\Assignments\Assignment_7\Assignment_7\obj\Debug\Assignment_7.csproj.CoreCompileInputs.cache
+C:\Thamaraii\CSharp\Assignments\Assignment_7\Assignment_7\obj\Debug\Assignment_7.exe
+C:\Thamaraii\CSharp\Assignments\Assignment_7\Assignment_7\obj\Debug\Assignment_7.pdb
+C:\Thamaraii\CSharp\Assignments\Assignment_7\Assignment_7\bin\Debug\TicketPriceCalculation.dll
+C:\Thamaraii\CSharp\Assignments\Assignment_7\Assignment_7\bin\Debug\TicketPriceCalculation.pdb
+C:\Thamaraii\CSharp\Assignments\Assignment_7\Assignment_7\obj\Debug\Assignment_7.csproj.CopyComplete

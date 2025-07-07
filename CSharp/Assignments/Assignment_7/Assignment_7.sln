@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36128.20
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment_7", "Assignment_7\Assignment_7.csproj", "{AD837F57-6BEB-4ACB-BD50-8727B54C0B73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketPriceCalculation", "TicketPriceCalculation\TicketPriceCalculation.csproj", "{5834C098-7797-4DA5-98FA-015EB21C3566}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD837F57-6BEB-4ACB-BD50-8727B54C0B73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD837F57-6BEB-4ACB-BD50-8727B54C0B73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD837F57-6BEB-4ACB-BD50-8727B54C0B73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD837F57-6BEB-4ACB-BD50-8727B54C0B73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5834C098-7797-4DA5-98FA-015EB21C3566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5834C098-7797-4DA5-98FA-015EB21C3566}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5834C098-7797-4DA5-98FA-015EB21C3566}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5834C098-7797-4DA5-98FA-015EB21C3566}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56E6A5B4-1EBE-4CD4-9C25-B1EEF6BF93EC}
+	EndGlobalSection
+EndGlobal

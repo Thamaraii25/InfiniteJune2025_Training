@@ -1,0 +1,6 @@
+C:\Thamaraii\CSharp\Assignments\Assignment_7\TicketPriceCalculation\bin\Debug\TicketPriceCalculation.dll
+C:\Thamaraii\CSharp\Assignments\Assignment_7\TicketPriceCalculation\bin\Debug\TicketPriceCalculation.pdb
+C:\Thamaraii\CSharp\Assignments\Assignment_7\TicketPriceCalculation\obj\Debug\TicketPriceCalculation.csproj.AssemblyReference.cache
+C:\Thamaraii\CSharp\Assignments\Assignment_7\TicketPriceCalculation\obj\Debug\TicketPriceCalculation.csproj.CoreCompileInputs.cache
+C:\Thamaraii\CSharp\Assignments\Assignment_7\TicketPriceCalculation\obj\Debug\TicketPriceCalculation.dll
+C:\Thamaraii\CSharp\Assignments\Assignment_7\TicketPriceCalculation\obj\Debug\TicketPriceCalculation.pdb
