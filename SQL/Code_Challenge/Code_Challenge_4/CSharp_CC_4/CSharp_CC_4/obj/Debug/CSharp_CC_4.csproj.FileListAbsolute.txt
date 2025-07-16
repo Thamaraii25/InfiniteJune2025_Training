@@ -1,0 +1,7 @@
+C:\Thamaraii\SQL\Code_Challenge\Code_Challenge_4\CSharp_CC_4\CSharp_CC_4\bin\Debug\CSharp_CC_4.exe.config
+C:\Thamaraii\SQL\Code_Challenge\Code_Challenge_4\CSharp_CC_4\CSharp_CC_4\bin\Debug\CSharp_CC_4.exe
+C:\Thamaraii\SQL\Code_Challenge\Code_Challenge_4\CSharp_CC_4\CSharp_CC_4\bin\Debug\CSharp_CC_4.pdb
+C:\Thamaraii\SQL\Code_Challenge\Code_Challenge_4\CSharp_CC_4\CSharp_CC_4\obj\Debug\CSharp_CC_4.csproj.AssemblyReference.cache
+C:\Thamaraii\SQL\Code_Challenge\Code_Challenge_4\CSharp_CC_4\CSharp_CC_4\obj\Debug\CSharp_CC_4.csproj.CoreCompileInputs.cache
+C:\Thamaraii\SQL\Code_Challenge\Code_Challenge_4\CSharp_CC_4\CSharp_CC_4\obj\Debug\CSharp_CC_4.exe
+C:\Thamaraii\SQL\Code_Challenge\Code_Challenge_4\CSharp_CC_4\CSharp_CC_4\obj\Debug\CSharp_CC_4.pdb
