@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Assignment 2</title>
+    <style>
+        .image {
+            position: relative;
+            width: 300px;
+        }
+
+         .image img {
+            width: 100%;
+         }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .image:hover .overlay {
+            opacity: 1;
+        }
+
+        .animationDelay {
+            width: 100px;
+            height: 100px;
+            position:relative;
+            background:cyan;
+            border-radius:50%;
+            animation: move 5s infinite;
+            animation-delay: 2s;
+        }
+         @keyframes move {
+            from {left: 0px;}
+            to {left: 200px;}
+         }
+
+        button {
+            background-color: cyan;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <!--1. Using HTML, CSS create display an image overlay effect on hover -->
+    <h2>1. Image Overlay on Hover</h2>
+    <div class="image">
+        <img src="lotusFlower.jpg" alt="Lotus" />
+        <div class="overlay">Lotus Flower</div>
+    </div>
+
+    <!--2. Create a CSS3 based button using style elements/properties-->
+    <h2>2. CSS3 Button</h2>
+    <div>
+        <button>Button</button>
+    </div>
+
+    <!--3. Define a Descriptive/Definition List using your own items-->
+    <h2>3. Descriptive List</h2>
+    <div>
+        <dl>
+            <dt><b>HTML</b></dt>
+            <dd>Hypertext Markup Language</dd>
+            <dd>Standard language for creating web pages</dd>
+            <dt><b>CSS</b></dt>
+            <dd>Cascading Style Sheet</dd>
+            <dd>To style and layout web pages.</dd>
+        </dl>
+    </div>
+
+    <!--4. How to make use of animation-delay , and then restart again-->
+    <h2>4. Animation Delay</h2>
+    <div class="animationDelay"></div>
+
+    <!--5. Create a Tribute Page of a person with his or her image on the top of the page. Name the person
+    Below that give his/her achievements or any information about the person.-->
+    <h2>5. Tribute Page – Dr. B.R. Ambedkar</h2>
+    <div style="text-align :justify">
+        <div class="image">        
+        <img src="Ambedkar.jpg" alt="Dr. B.R. Ambedkar">
+        </div>
+        <h3>Dr. B.R. Ambedkar</h3>
+        <p>Dr. Bhimrao Ramji Ambedkar was an Indian jurist, economist, and social reformer who inspired the Dalit Buddhist movement and campaigned against social discrimination.</p>
+        <ul type="circle">
+            <li>Studied at Columbia University and London School of Economics</li>
+            <li>Chief Architect of the Indian Constitution</li>
+            <li>First Law Minister of India</li>
+            <li>Fought against caste discrimination</li>
+            <li>Promoted equality and human rights</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+C:\Thamaraii\WebTechnologies\HTML\Assignments\Assignment_2\Assignment_2\bin\Debug\Assignment_2.exe.config
+C:\Thamaraii\WebTechnologies\HTML\Assignments\Assignment_2\Assignment_2\bin\Debug\Assignment_2.exe
+C:\Thamaraii\WebTechnologies\HTML\Assignments\Assignment_2\Assignment_2\bin\Debug\Assignment_2.pdb
+C:\Thamaraii\WebTechnologies\HTML\Assignments\Assignment_2\Assignment_2\obj\Debug\Assignment_2.csproj.AssemblyReference.cache
+C:\Thamaraii\WebTechnologies\HTML\Assignments\Assignment_2\Assignment_2\obj\Debug\Assignment_2.csproj.CoreCompileInputs.cache
+C:\Thamaraii\WebTechnologies\HTML\Assignments\Assignment_2\Assignment_2\obj\Debug\Assignment_2.exe
+C:\Thamaraii\WebTechnologies\HTML\Assignments\Assignment_2\Assignment_2\obj\Debug\Assignment_2.pdb

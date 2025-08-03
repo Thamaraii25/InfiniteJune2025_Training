@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7318365D-0DED-43AC-ACA6-4C7742F38384}</ProjectGuid>
+    <ProjectGuid>{92ECC62E-3668-45CE-84DC-67D3587BA6F6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SQLConnection</RootNamespace>
-    <AssemblyName>SQLConnection</AssemblyName>
+    <RootNamespace>Assignement_1</RootNamespace>
+    <AssemblyName>Assignement_1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,6 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assignment_1.html" />
+    <Content Include="sample-3s.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

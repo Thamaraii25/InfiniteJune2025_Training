@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.36128.20
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLConnection", "SQLConnection\SQLConnection.csproj", "{7318365D-0DED-43AC-ACA6-4C7742F38384}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment_1", "Assignement_1\Assignment_1.csproj", "{92ECC62E-3668-45CE-84DC-67D3587BA6F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7318365D-0DED-43AC-ACA6-4C7742F38384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7318365D-0DED-43AC-ACA6-4C7742F38384}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7318365D-0DED-43AC-ACA6-4C7742F38384}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7318365D-0DED-43AC-ACA6-4C7742F38384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92ECC62E-3668-45CE-84DC-67D3587BA6F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92ECC62E-3668-45CE-84DC-67D3587BA6F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92ECC62E-3668-45CE-84DC-67D3587BA6F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92ECC62E-3668-45CE-84DC-67D3587BA6F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {62F0CCE9-B5C2-459A-9F65-306C710C2110}
+		SolutionGuid = {362A6B77-0CFD-4BFD-9B16-9140314D03D8}
 	EndGlobalSection
 EndGlobal
