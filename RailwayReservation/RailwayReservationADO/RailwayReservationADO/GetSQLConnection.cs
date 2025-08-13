@@ -12,7 +12,7 @@ namespace RailwayReservationADO
     {
         public static SqlConnection getConnection()
         {
-            string connString = ConfigurationManager.ConnectionStrings["SQLServerConnection"].ConnectionString;
+            string connString = "Data Source = ICS-LT-5HK96V3\\SQLEXPRESS; Initial Catalog = RailwayReservation; user id = sa; password = Thamarai2514@#";
             SqlConnection con = new SqlConnection(connString);
             return con;
         }

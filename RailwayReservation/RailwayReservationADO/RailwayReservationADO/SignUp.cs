@@ -15,6 +15,7 @@ namespace RailwayReservationADO
     {
         SqlConnection con = GetSQLConnection.getConnection();
         public static SqlCommand cmd;
+
         public SignUp()
         {
             InitializeComponent();
@@ -72,8 +73,6 @@ namespace RailwayReservationADO
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Sign Up Successfull...Redirecting to Login Page....!!!");
-                cmd = new SqlCommand("Select UserId from UserTable", con);
-                int userId =  (int) cmd.ExecuteScalar();
 
                 Home home = new Home();
                 home.Show();

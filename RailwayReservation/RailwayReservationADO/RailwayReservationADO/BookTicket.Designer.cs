@@ -47,6 +47,7 @@ namespace RailwayReservationADO
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbClass = new System.Windows.Forms.ComboBox();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwAddPassengers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -199,11 +200,22 @@ namespace RailwayReservationADO
             this.cmbClass.Size = new System.Drawing.Size(121, 28);
             this.cmbClass.TabIndex = 13;
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(1051, 27);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(90, 33);
+            this.btnBack.TabIndex = 14;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // BookTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1172, 644);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.cmbClass);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtTrainCode);
@@ -247,5 +259,6 @@ namespace RailwayReservationADO
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbClass;
+        private System.Windows.Forms.Button btnBack;
     }
 }

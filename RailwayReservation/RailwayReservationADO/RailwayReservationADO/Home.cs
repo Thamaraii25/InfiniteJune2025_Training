@@ -14,64 +14,67 @@ namespace RailwayReservationADO
     public partial class Home : Form
     {
         SqlConnection con = GetSQLConnection.getConnection();
+        public static SqlCommand cmd;
+
         public Home()
         {
             InitializeComponent();
         }
 
-     
+        public static bool ValidateAdmin(string email, string password)
+        {
+            string adminEmail = "admin@gmail.com";
+            string adminPassword = "admin123";
+            return email == adminEmail && password == adminPassword;
+        }
+
+
         private void btnAdminLogin_Click(object sender, EventArgs e)
         {
-            try
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("select count(*) from Admin where Email = @email and Password = @password",con);
-                cmd.Parameters.AddWithValue("@email", txtEmail.Text);
-                cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+            string email = txtEmail.Text;
+            string password = txtPassword.Text;
 
-                int count = (int)cmd.ExecuteScalar();
-                if (count > 0)
-                {
-                    MessageBox.Show("Admin Login Successful");
-                    AdminDashBoard adminDashBoard = new AdminDashBoard();
-                    adminDashBoard.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid Admin Credentials");
-                }
-
-            }
-            catch (Exception ex)
+            if (ValidateAdmin(email, password))
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Admin Login Successfully...");
+                AdminDashBoard adminDashBoard = new AdminDashBoard();
+                adminDashBoard.Show();
+                this.Hide();
             }
-            finally{
-                con.Close();
+            else
+            {
+                MessageBox.Show("Invalid Admin Credentials.");
             }
         }
+
+
 
         private void btnUserLogin_Click(object sender, EventArgs e)
         {
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("select UserId from UserTable where Email = @email and Password = @password",con);
+                cmd = new SqlCommand("select count(*) from UserTable where Email = @email and Password = @password",con);
                 cmd.Parameters.AddWithValue("@email", txtEmail.Text);
                 cmd.Parameters.AddWithValue("@password", txtPassword.Text);
 
-                int userId = (int)cmd.ExecuteScalar();
-                if (userId != 0)
+                int count = (int)cmd.ExecuteScalar();
+
+                if (count > 0)
                 {
-                    MessageBox.Show("User Login Successful");
+                    MessageBox.Show("User Login Successfull..");
+                    cmd = new SqlCommand("select count(*) from UserTable where Email = @email and Password = @password", con);
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                    int userId = (int)cmd.ExecuteScalar();
+
                     UserDashboard userDashboard = new UserDashboard(userId);
                     userDashboard.Show();
                     this.Hide();
                 }
                 else
                 {
-                    MessageBox.Show("Invalid User Credentials");
+                    MessageBox.Show("Invalid User Credentials..");
                 }
 
             }

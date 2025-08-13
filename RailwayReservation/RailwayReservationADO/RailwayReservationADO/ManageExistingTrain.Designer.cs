@@ -34,6 +34,9 @@ namespace RailwayReservationADO
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddTrain = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.dtpJourneyDate = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnSubmit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManageExistingTrain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +64,7 @@ namespace RailwayReservationADO
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(798, 129);
+            this.label2.Location = new System.Drawing.Point(789, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(208, 20);
             this.label2.TabIndex = 2;
@@ -69,9 +72,9 @@ namespace RailwayReservationADO
             // 
             // btnAddTrain
             // 
-            this.btnAddTrain.Location = new System.Drawing.Point(1012, 126);
+            this.btnAddTrain.Location = new System.Drawing.Point(1003, 126);
             this.btnAddTrain.Name = "btnAddTrain";
-            this.btnAddTrain.Size = new System.Drawing.Size(83, 27);
+            this.btnAddTrain.Size = new System.Drawing.Size(92, 33);
             this.btnAddTrain.TabIndex = 3;
             this.btnAddTrain.Text = "Add Train";
             this.btnAddTrain.UseVisualStyleBackColor = true;
@@ -87,11 +90,40 @@ namespace RailwayReservationADO
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // dtpJourneyDate
+            // 
+            this.dtpJourneyDate.Location = new System.Drawing.Point(213, 133);
+            this.dtpJourneyDate.Name = "dtpJourneyDate";
+            this.dtpJourneyDate.Size = new System.Drawing.Size(288, 26);
+            this.dtpJourneyDate.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(80, 138);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Journey Date";
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(519, 126);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(105, 33);
+            this.btnSubmit.TabIndex = 7;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
             // ManageExistingTrain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 661);
+            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dtpJourneyDate);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAddTrain);
             this.Controls.Add(this.label2);
@@ -112,5 +144,8 @@ namespace RailwayReservationADO
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddTrain;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.DateTimePicker dtpJourneyDate;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSubmit;
     }
 }

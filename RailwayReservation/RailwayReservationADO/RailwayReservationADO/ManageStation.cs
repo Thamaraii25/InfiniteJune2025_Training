@@ -14,6 +14,7 @@ namespace RailwayReservationADO
     public partial class ManageStation : Form
     {
         SqlConnection con = GetSQLConnection.getConnection();
+        public static SqlCommand cmd;
         int selectedStationId = 0;
         public ManageStation()
         {
@@ -23,18 +24,27 @@ namespace RailwayReservationADO
             con.Close();
         }
 
+        private void LoadStationName()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("Select * from Station order by StationId", con);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            dgvManageStations.DataSource = ds.Tables[0];
+        }
+
         private void btnAddStation_Click(object sender, EventArgs e)
         {
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("insert into Station(StationName) values(@StationName)",con);
+
+                cmd = new SqlCommand("insert into Station(StationName) values(@StationName)",con);
                 cmd.Parameters.AddWithValue("@StationName", txtStationName.Text);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Insertion Successfull..");
-                LoadStationName();
                 txtStationName.Clear();
                 selectedStationId = 0;
+                LoadStationName();
             }
             catch(Exception ex)
             {
@@ -44,14 +54,6 @@ namespace RailwayReservationADO
             {
                 con.Close();
             }
-        }
-
-        private void LoadStationName()
-        {
-            SqlDataAdapter da = new SqlDataAdapter("Select * from Station",con);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            dgvManageStations.DataSource = ds.Tables[0];
         }
 
         private void btnUpdateStationName_Click(object sender, EventArgs e)
@@ -69,9 +71,9 @@ namespace RailwayReservationADO
                 cmd.Parameters.AddWithValue("@StationId", selectedStationId);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Updation Successfull..");
-                LoadStationName();
                 txtStationName.Clear();
                 selectedStationId = 0;
+                LoadStationName();
             }
             catch (Exception ex)
             {
@@ -97,9 +99,9 @@ namespace RailwayReservationADO
                 cmd.Parameters.AddWithValue("@StationId", selectedStationId);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Deletion Successfull..");
-                LoadStationName();
                 txtStationName.Clear();
                 selectedStationId = 0;
+                LoadStationName();
             }
             catch (Exception ex)
             {

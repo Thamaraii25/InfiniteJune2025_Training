@@ -30,7 +30,6 @@ namespace RailwayReservationADO
         private void InitializeComponent()
         {
             this.btnUserSignUp = new System.Windows.Forms.Button();
-            this.btnAdminSignUp = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
@@ -47,23 +46,13 @@ namespace RailwayReservationADO
             // 
             // btnUserSignUp
             // 
-            this.btnUserSignUp.Location = new System.Drawing.Point(665, 488);
+            this.btnUserSignUp.Location = new System.Drawing.Point(500, 497);
             this.btnUserSignUp.Name = "btnUserSignUp";
             this.btnUserSignUp.Size = new System.Drawing.Size(127, 35);
             this.btnUserSignUp.TabIndex = 27;
             this.btnUserSignUp.Text = "User Sign Up";
             this.btnUserSignUp.UseVisualStyleBackColor = true;
             this.btnUserSignUp.Click += new System.EventHandler(this.btnUserSignUp_Click);
-            // 
-            // btnAdminSignUp
-            // 
-            this.btnAdminSignUp.Location = new System.Drawing.Point(419, 488);
-            this.btnAdminSignUp.Name = "btnAdminSignUp";
-            this.btnAdminSignUp.Size = new System.Drawing.Size(127, 35);
-            this.btnAdminSignUp.TabIndex = 26;
-            this.btnAdminSignUp.Text = "Admin Sign Up";
-            this.btnAdminSignUp.UseVisualStyleBackColor = true;
-            this.btnAdminSignUp.Click += new System.EventHandler(this.btnAdminSignUp_Click);
             // 
             // txtEmail
             // 
@@ -172,7 +161,6 @@ namespace RailwayReservationADO
             this.ClientSize = new System.Drawing.Size(1167, 650);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnUserSignUp);
-            this.Controls.Add(this.btnAdminSignUp);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtPhoneNumber);
             this.Controls.Add(this.txtConfirmPassword);
@@ -194,7 +182,6 @@ namespace RailwayReservationADO
         #endregion
 
         private System.Windows.Forms.Button btnUserSignUp;
-        private System.Windows.Forms.Button btnAdminSignUp;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPhoneNumber;
         private System.Windows.Forms.TextBox txtConfirmPassword;

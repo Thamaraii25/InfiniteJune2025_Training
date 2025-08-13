@@ -35,7 +35,8 @@ namespace RailwayReservationADO
                                "from Reservation r " +
                                "join Station ss ON ss.StationId = r.SourceStationId " +
                                "join Station sd ON sd.StationId = r.DestinationStationId " +
-                               "where r.UserId = @UserId";
+                               "where r.UserId = @UserId " +
+                               "order by r.JourneyDate desc";
 
                 cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@UserId", UserId);
@@ -60,7 +61,7 @@ namespace RailwayReservationADO
             try
             {
                 con.Open();
-                string query = "select p.Name, p.Age, p.Gender, p.AllottedBerth " +
+                string query = "select p.Name, p.Age, p.Gender, p.Status " +
                                "from Passenger p " +
                                "join Reservation r ON r.ReservationId = p.ReservationId " +
                                "where r.UserId = @UserId";
@@ -86,7 +87,7 @@ namespace RailwayReservationADO
 
         private void btnBackHome_Click(object sender, EventArgs e)
         {
-            UserDashboard userDashboard = new UserDashboard();
+            UserDashboard userDashboard = new UserDashboard(UserId);
             userDashboard.Show();
             this.Hide();
         }

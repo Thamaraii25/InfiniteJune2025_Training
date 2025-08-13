@@ -68,20 +68,33 @@ namespace RailwayReservationADO
             {
                 con.Open();
 
+                if (cmbSource.SelectedItem.ToString() == cmbDestination.SelectedItem.ToString())
+                {
+                    MessageBox.Show("Source and Destination cannot be the same.");
+                    return;
+                }
+
+                if (dtpJourneyDate.Value.Date < DateTime.Now.Date)
+                {
+                    MessageBox.Show("Try Using UpComing Journey date");
+
+                }
+
                 int sourceId = GetStationId(cmbSource.SelectedItem.ToString());
                 int destId = GetStationId(cmbDestination.SelectedItem.ToString());
-                DateTime journeyDate = dtpJourneyDate.Value.Date;
-
+                DateTime journeyDate = dtpJourneyDate.Value.Date; ;
+                
                 string query =
-                    "select t.TrainCode, t.TrainName, r1.ArrivalTime as [Start Time], r2.ArrivalTime as [Reach Time], sum(s.AvailableSeats) as [Available Seats]  " +
+                    "select t.TrainCode, t.TrainName, r1.DepartureTime as [Start Time], r2.ArrivalTime as [Reach Time], sum(s.AvailableSeats) as [Available Seats]  " +
                     "from Train t " +
                     "join TrainRoute r1 on t.TrainId = r1.TrainId and r1.StationId = @sourceId " +
                     "join TrainRoute r2 on t.TrainId = r2.TrainId and r2.StationId = @destId " +
                     "join TrainRunningDays d on t.TrainId = d.TrainId " +
-                    "join Seats s on t.TrainId = s.TrainId " +
+                    "join Seats s on t.TrainId = s.TrainId and s.JourneyDate = @journeydate " +
                     "where r1.RouteOrder < r2.RouteOrder " +
-                    "and d.dayofweek = datepart(weekday, @journeydate) " +
-                    "group by t.TrainCode, t.TrainName, r1.ArrivalTime, r2.ArrivalTime";
+                    "and dayofweek = case datepart(weekday, @journeydate) when 1 then 0 when 2 then 1" +
+                    "when 3 then 2 when 4 then 3 when 5 then 4 when 6 then 5 when 7 then 6 end " +
+                    "group by t.TrainCode, t.TrainName, r1.DepartureTime, r2.ArrivalTime";
 
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@sourceid", sourceId);
@@ -119,10 +132,18 @@ namespace RailwayReservationADO
             string destination = cmbDestination.SelectedItem.ToString();
             DateTime journeyDate = dtpJourneyDate.Value.Date;
 
+            MessageBox.Show(UserId.ToString());
+
             BookTicket bookTicket = new BookTicket(UserId, trainCode, source, destination, journeyDate);
             bookTicket.Show();
             this.Hide();
         }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            UserDashboard userDashboard = new UserDashboard(UserId);
+            userDashboard.Show();
+            this.Hide();
+        }
     }
 }

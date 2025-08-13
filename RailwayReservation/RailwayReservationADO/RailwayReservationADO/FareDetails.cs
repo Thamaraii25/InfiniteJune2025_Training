@@ -18,6 +18,7 @@ namespace RailwayReservationADO
         public static SqlCommand cmd;
         public static SqlDataReader dr;
         public int srcId,descId,trainId;
+
         public FareDetails()
         {
             InitializeComponent();
@@ -90,17 +91,6 @@ namespace RailwayReservationADO
             }
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            AdminDashBoard adminDashBoard = new AdminDashBoard();
-            adminDashBoard.Show();
-            this.Hide();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnUpdateFare_Click(object sender, EventArgs e)
         {
@@ -152,6 +142,13 @@ namespace RailwayReservationADO
             {
                 con.Close();
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            AdminDashBoard adminDashBoard = new AdminDashBoard();
+            adminDashBoard.Show();
+            this.Hide();
         }
     }
 }

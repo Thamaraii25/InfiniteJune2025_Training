@@ -40,22 +40,23 @@ namespace RailwayReservationADO
             this.txtTrainCode = new System.Windows.Forms.TextBox();
             this.txtTrainName = new System.Windows.Forms.TextBox();
             this.dgvRoutes = new System.Windows.Forms.DataGridView();
+            this.txtStationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartureTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RouteOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clbRunningDays = new System.Windows.Forms.CheckedListBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnAddTrain = new System.Windows.Forms.Button();
             this.btnManageExistingTrain = new System.Windows.Forms.Button();
-            this.btnManageFare = new System.Windows.Forms.Button();
-            this.txtStationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartureTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RouteOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnUpdateStatus = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.dgvSeats = new System.Windows.Forms.DataGridView();
-            this.label8 = new System.Windows.Forms.Label();
             this.txtClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtCoachCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSeatCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnCancelTrain = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoutes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSeats)).BeginInit();
             this.SuspendLayout();
@@ -160,17 +161,43 @@ namespace RailwayReservationADO
             this.dgvRoutes.Size = new System.Drawing.Size(494, 139);
             this.dgvRoutes.TabIndex = 10;
             // 
+            // txtStationName
+            // 
+            this.txtStationName.HeaderText = "Station Name";
+            this.txtStationName.MinimumWidth = 8;
+            this.txtStationName.Name = "txtStationName";
+            this.txtStationName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ArrivalTime
+            // 
+            this.ArrivalTime.HeaderText = "Arrival Time";
+            this.ArrivalTime.MinimumWidth = 8;
+            this.ArrivalTime.Name = "ArrivalTime";
+            this.ArrivalTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // DepartureTime
+            // 
+            this.DepartureTime.HeaderText = "DepartureTime";
+            this.DepartureTime.MinimumWidth = 8;
+            this.DepartureTime.Name = "DepartureTime";
+            // 
+            // RouteOrder
+            // 
+            this.RouteOrder.HeaderText = "RouteOrder";
+            this.RouteOrder.MinimumWidth = 8;
+            this.RouteOrder.Name = "RouteOrder";
+            // 
             // clbRunningDays
             // 
             this.clbRunningDays.FormattingEnabled = true;
             this.clbRunningDays.Items.AddRange(new object[] {
+            "Sunday",
             "Monday",
             "Tuesday",
             "Wednesday",
             "Thrusday",
             "Friday",
-            "Saturday",
-            "Sunday"});
+            "Saturday"});
             this.clbRunningDays.Location = new System.Drawing.Point(658, 246);
             this.clbRunningDays.Name = "clbRunningDays";
             this.clbRunningDays.Size = new System.Drawing.Size(143, 165);
@@ -214,41 +241,15 @@ namespace RailwayReservationADO
             this.btnManageExistingTrain.UseVisualStyleBackColor = true;
             this.btnManageExistingTrain.Click += new System.EventHandler(this.btnManageExistingTrain_Click);
             // 
-            // btnManageFare
+            // btnUpdateStatus
             // 
-            this.btnManageFare.Location = new System.Drawing.Point(639, 513);
-            this.btnManageFare.Name = "btnManageFare";
-            this.btnManageFare.Size = new System.Drawing.Size(193, 45);
-            this.btnManageFare.TabIndex = 18;
-            this.btnManageFare.Text = "Manage Fare";
-            this.btnManageFare.UseVisualStyleBackColor = true;
-            this.btnManageFare.Click += new System.EventHandler(this.btnManageFare_Click);
-            // 
-            // txtStationName
-            // 
-            this.txtStationName.HeaderText = "Station Name";
-            this.txtStationName.MinimumWidth = 8;
-            this.txtStationName.Name = "txtStationName";
-            this.txtStationName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ArrivalTime
-            // 
-            this.ArrivalTime.HeaderText = "Arrival Time";
-            this.ArrivalTime.MinimumWidth = 8;
-            this.ArrivalTime.Name = "ArrivalTime";
-            this.ArrivalTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // DepartureTime
-            // 
-            this.DepartureTime.HeaderText = "DepartureTime";
-            this.DepartureTime.MinimumWidth = 8;
-            this.DepartureTime.Name = "DepartureTime";
-            // 
-            // RouteOrder
-            // 
-            this.RouteOrder.HeaderText = "RouteOrder";
-            this.RouteOrder.MinimumWidth = 8;
-            this.RouteOrder.Name = "RouteOrder";
+            this.btnUpdateStatus.Location = new System.Drawing.Point(639, 513);
+            this.btnUpdateStatus.Name = "btnUpdateStatus";
+            this.btnUpdateStatus.Size = new System.Drawing.Size(193, 45);
+            this.btnUpdateStatus.TabIndex = 18;
+            this.btnUpdateStatus.Text = "Update Train Status";
+            this.btnUpdateStatus.UseVisualStyleBackColor = true;
+            this.btnUpdateStatus.Click += new System.EventHandler(this.btnUpdateStatus_Click);
             // 
             // btnBack
             // 
@@ -276,15 +277,6 @@ namespace RailwayReservationADO
             this.dgvSeats.Size = new System.Drawing.Size(483, 117);
             this.dgvSeats.TabIndex = 20;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(49, 428);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(235, 20);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Enter Seat Count In Each Class";
-            // 
             // txtClass
             // 
             this.txtClass.HeaderText = "Class";
@@ -303,15 +295,35 @@ namespace RailwayReservationADO
             this.txtSeatCount.MinimumWidth = 8;
             this.txtSeatCount.Name = "txtSeatCount";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(49, 428);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(235, 20);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Enter Seat Count In Each Class";
+            // 
+            // btnCancelTrain
+            // 
+            this.btnCancelTrain.Location = new System.Drawing.Point(926, 504);
+            this.btnCancelTrain.Name = "btnCancelTrain";
+            this.btnCancelTrain.Size = new System.Drawing.Size(193, 48);
+            this.btnCancelTrain.TabIndex = 22;
+            this.btnCancelTrain.Text = "Cancel Train";
+            this.btnCancelTrain.UseVisualStyleBackColor = true;
+            this.btnCancelTrain.Click += new System.EventHandler(this.btnCancelTrain_Click);
+            // 
             // ManageTrain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1171, 638);
+            this.Controls.Add(this.btnCancelTrain);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dgvSeats);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnManageFare);
+            this.Controls.Add(this.btnUpdateStatus);
             this.Controls.Add(this.btnManageExistingTrain);
             this.Controls.Add(this.btnAddTrain);
             this.Controls.Add(this.label9);
@@ -355,7 +367,7 @@ namespace RailwayReservationADO
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnAddTrain;
         private System.Windows.Forms.Button btnManageExistingTrain;
-        private System.Windows.Forms.Button btnManageFare;
+        private System.Windows.Forms.Button btnUpdateStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtStationName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ArrivalTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartureTime;
@@ -366,5 +378,6 @@ namespace RailwayReservationADO
         private System.Windows.Forms.DataGridViewTextBoxColumn txtClass;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtCoachCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtSeatCount;
+        private System.Windows.Forms.Button btnCancelTrain;
     }
 }

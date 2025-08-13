@@ -75,6 +75,16 @@ namespace RailwayReservationADO
                 cmd.Parameters.AddWithValue("@TrainCode", txtTrainCode.Text);
                 int trainId = Convert.ToInt32(cmd.ExecuteScalar());
 
+                cmd = new SqlCommand("select Status from Train where TrainId = @TrainId", con);
+                cmd.Parameters.AddWithValue("@TrainId", trainId);
+                string status = cmd.ExecuteScalar().ToString();
+
+                if (status != "Active")
+                {
+                    MessageBox.Show("Booking is not allowed... This train is currently inactive or cancelled...");
+                    return;
+                }
+
                 cmd = new SqlCommand("select StationId from Station where StationName = @SourceName", con);
                 cmd.Parameters.AddWithValue("@SourceName", txtSource.Text);
                 int sourceId = Convert.ToInt32(cmd.ExecuteScalar());
@@ -87,92 +97,97 @@ namespace RailwayReservationADO
                 foreach (DataGridViewRow row in dgwAddPassengers.Rows)
                 {
                     if (row.Cells["PassengerName"].Value != null)
-                    {
                         passengerCount++;
-                    }
                     else
-                    {
                         break;
-                    }
                 }
+
                 MessageBox.Show(userId.ToString());
 
                 string insertReservation = "insert into Reservation(UserId, TrainId, SourceStationId, DestinationStationId, JourneyDate, PassengerCount, Status) " +
-                                           "values(@UserId,@TrainId, @SourceId, @DestId, @JourneyDate, @PassengerCount, @Status); " +
-                                           "select scope_identity()";
+                                           "values(@UserId,@TrainId, @SourceId, @DestId, @JourneyDate, @PassengerCount, @Status); select scope_identity()";
 
-                SqlCommand cmdReservation = new SqlCommand(insertReservation, con);
-                cmdReservation.Parameters.AddWithValue("@UserId", userId);
-                cmdReservation.Parameters.AddWithValue("@TrainId", trainId);
-                cmdReservation.Parameters.AddWithValue("@SourceId", sourceId);
-                cmdReservation.Parameters.AddWithValue("@DestId", destId);
-                cmdReservation.Parameters.AddWithValue("@JourneyDate", DateTime.Parse(txtJourneyDate.Text));
-                cmdReservation.Parameters.AddWithValue("@PassengerCount", passengerCount);
-                cmdReservation.Parameters.AddWithValue("@Status", "Booked");
+                cmd = new SqlCommand(insertReservation, con);
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                cmd.Parameters.AddWithValue("@TrainId", trainId);
+                cmd.Parameters.AddWithValue("@SourceId", sourceId);
+                cmd.Parameters.AddWithValue("@DestId", destId);
+                cmd.Parameters.AddWithValue("@JourneyDate", DateTime.Parse(txtJourneyDate.Text));
+                cmd.Parameters.AddWithValue("@PassengerCount", passengerCount);
+                cmd.Parameters.AddWithValue("@Status", "Booked");
+                int reservationId = Convert.ToInt32(cmd.ExecuteScalar());
 
-                int reservationId = Convert.ToInt32(cmdReservation.ExecuteScalar());
+                cmd = new SqlCommand("select TotalSeats from Seats where TrainId = @TrainId and Class = @Class and JourneyDate = @JourneyDate", con);
+                cmd.Parameters.AddWithValue("@TrainId", trainId);
+                cmd.Parameters.AddWithValue("@Class", cmbClass.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@JourneyDate", DateTime.Parse(txtJourneyDate.Text));
+                int totalSeats = Convert.ToInt32(cmd.ExecuteScalar());
 
-                SqlCommand cmdTotalSeats = new SqlCommand("select TotalSeats from Seats where TrainId = @TrainId and Class = @Class", con);
-                cmdTotalSeats.Parameters.AddWithValue("@TrainId", trainId);
-                cmdTotalSeats.Parameters.AddWithValue("@Class", cmbClass.SelectedItem.ToString());
-                int totalSeats = Convert.ToInt32(cmdTotalSeats.ExecuteScalar());
+                string classPrefix = cmbClass.SelectedItem.ToString();
 
-                string bookedSeatsQuery = "select p.AllottedBerth from Passenger p join Reservation r on p.ReservationId = r.ReservationId " +
-                                          "where r.TrainId = @TrainId and p.AllottedBerth like @ClassPrefix and r.JourneyDate = @JourneyDate and r.Status = 'Booked'";
+                List<string> bookedBerths = new List<string>();
+                cmd = new SqlCommand("select p.AllottedBerth from Passenger p join Reservation r on p.ReservationId = r.ReservationId " +
+                    "where r.TrainId = @TrainId and p.AllottedBerth like @ClassPrefix and r.JourneyDate = @JourneyDate " +
+                    "and r.Status in ('Booked', 'Partially Cancelled') and p.Status = 'Booked'", con);
 
-                SqlCommand cmdBookedSeats = new SqlCommand(bookedSeatsQuery, con);
-                cmdBookedSeats.Parameters.AddWithValue("@TrainId", trainId);
-                cmdBookedSeats.Parameters.AddWithValue("@ClassPrefix", cmbClass.SelectedItem.ToString() + "%");
-                cmdBookedSeats.Parameters.AddWithValue("@JourneyDate", DateTime.Parse(txtJourneyDate.Text));
+                cmd.Parameters.AddWithValue("@TrainId", trainId);
+                cmd.Parameters.AddWithValue("@ClassPrefix", classPrefix + "%");
+                cmd.Parameters.AddWithValue("@JourneyDate", DateTime.Parse(txtJourneyDate.Text));
 
-                SqlDataReader drBooked = cmdBookedSeats.ExecuteReader();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    bookedBerths.Add(dr["AllottedBerth"].ToString());
+                }
+                dr.Close();
+
                 List<int> bookedSeatNumbers = new List<int>();
-                while (drBooked.Read())
+                foreach (string berth in bookedBerths)
                 {
-                    string berth = drBooked.GetString(0);
-                    string seatNumStr = berth.Substring(cmbClass.SelectedItem.ToString().Length);
-                    int seatNum = 0;
-                    int.TryParse(seatNumStr, out seatNum);
-                    if (seatNum > 0)
-                        bookedSeatNumbers.Add(seatNum);
+                    string numberPart = berth.Substring(classPrefix.Length);
+                    int num = Convert.ToInt32(numberPart);
+                    bookedSeatNumbers.Add(num);
                 }
-                drBooked.Close();
 
-                string cancelledSeatsQuery = "select p.AllottedBerth from Passenger p join Reservation r on p.ReservationId = r.ReservationId " +
-                                             "where r.TrainId = @TrainId and p.AllottedBerth like @ClassPrefix and r.JourneyDate = @JourneyDate and r.Status = 'Cancelled'";
+                List<string> cancelledBerths = new List<string>();
+                cmd = new SqlCommand("select p.AllottedBerth from Passenger p join Reservation r on p.ReservationId = r.ReservationId " +
+                                     "where r.TrainId = @TrainId and p.AllottedBerth like @ClassPrefix and r.JourneyDate = @JourneyDate and p.Status = 'Cancelled'", con);
+                cmd.Parameters.AddWithValue("@TrainId", trainId);
+                cmd.Parameters.AddWithValue("@ClassPrefix", classPrefix + "%");
+                cmd.Parameters.AddWithValue("@JourneyDate", DateTime.Parse(txtJourneyDate.Text));
 
-                SqlCommand cmdCancelledSeats = new SqlCommand(cancelledSeatsQuery, con);
-                cmdCancelledSeats.Parameters.AddWithValue("@TrainId", trainId);
-                cmdCancelledSeats.Parameters.AddWithValue("@ClassPrefix", cmbClass.SelectedItem.ToString() + "%");
-                cmdCancelledSeats.Parameters.AddWithValue("@JourneyDate", DateTime.Parse(txtJourneyDate.Text));
-
-                SqlDataReader drCancelled = cmdCancelledSeats.ExecuteReader();
-                Queue<int> cancelledSeatNumbers = new Queue<int>();
-                while (drCancelled.Read())
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
                 {
-                    string berth = drCancelled.GetString(0);
-                    string seatNumStr = berth.Substring(cmbClass.SelectedItem.ToString().Length);
-                    int seatNum = 0;
-                    int.TryParse(seatNumStr, out seatNum);
-                    if (seatNum > 0)
-                        cancelledSeatNumbers.Enqueue(seatNum);
+                    cancelledBerths.Add(dr["AllottedBerth"].ToString());
                 }
-                drCancelled.Close();
+                dr.Close();
+
+                SortedSet<int> cancelledSeatNumbers = new SortedSet<int>();
+                foreach (string berth in cancelledBerths)
+                {
+                    string numberPart = berth.Substring(classPrefix.Length).Trim();
+                    int num = Convert.ToInt32(numberPart);
+                    cancelledSeatNumbers.Add(num); 
+                }
 
                 int seatToAssign = 1;
+                if (bookedSeatNumbers.Count > 0)
+                {
+                    seatToAssign = bookedSeatNumbers.Max() + 1;
+                }
 
                 foreach (DataGridViewRow row in dgwAddPassengers.Rows)
                 {
-                    var cellValue = row.Cells["PassengerName"].Value;
-                    if (cellValue == null)
-                    {
+                    if (row.Cells["PassengerName"].Value == null)
                         break;
-                    }
-                    int seatNumber = 0;
+
+                    int seatNumber;
 
                     if (cancelledSeatNumbers.Count > 0)
                     {
-                        seatNumber = cancelledSeatNumbers.Dequeue();
+                        seatNumber = cancelledSeatNumbers.Min();          
+                        cancelledSeatNumbers.Remove(seatNumber);
                     }
                     else
                     {
@@ -186,31 +201,34 @@ namespace RailwayReservationADO
                             MessageBox.Show("No seats available in this class.");
                             break;
                         }
+
                         seatNumber = seatToAssign;
                         seatToAssign++;
                     }
 
-                    string berth = cmbClass.SelectedItem.ToString() + seatNumber.ToString();
+                    string berth = classPrefix + seatNumber;
 
-                    SqlCommand cmdInsertPassenger = new SqlCommand("insert into Passenger(ReservationId, Name, Age, Gender, AllottedBerth) " +
-                                                                   "values(@ReservationId, @Name, @Age, @Gender, @Berth)", con);
-                    cmdInsertPassenger.Parameters.AddWithValue("@ReservationId", reservationId);
-                    cmdInsertPassenger.Parameters.AddWithValue("@Name", row.Cells["PassengerName"].Value.ToString());
-                    cmdInsertPassenger.Parameters.AddWithValue("@Age", Convert.ToInt32(row.Cells["Age"].Value));
-                    cmdInsertPassenger.Parameters.AddWithValue("@Gender", row.Cells["Gender"].Value.ToString());
-                    cmdInsertPassenger.Parameters.AddWithValue("@Berth", berth);
-                    cmdInsertPassenger.ExecuteNonQuery();
+                    cmd = new SqlCommand("insert into Passenger(ReservationId, Name, Age, Gender, AllottedBerth,Status) " +
+                                          "values(@ReservationId, @Name, @Age, @Gender, @Berth, @Status)", con);
+                    cmd.Parameters.AddWithValue("@ReservationId", reservationId);
+                    cmd.Parameters.AddWithValue("@Name", row.Cells["PassengerName"].Value.ToString());
+                    cmd.Parameters.AddWithValue("@Age", Convert.ToInt32(row.Cells["Age"].Value));
+                    cmd.Parameters.AddWithValue("@Gender", row.Cells["Gender"].Value.ToString());
+                    cmd.Parameters.AddWithValue("@Berth", berth);
+                    cmd.Parameters.AddWithValue("@Status", "Booked");
+                    cmd.ExecuteNonQuery();
 
-                    bookedSeatNumbers.Add(seatNumber); 
+                    bookedSeatNumbers.Add(seatNumber);
                 }
 
-                SqlCommand cmdUpdateSeats = new SqlCommand("update Seats set AvailableSeats = AvailableSeats - @Count where TrainId = @TrainId and Class = @Class", con);
-                cmdUpdateSeats.Parameters.AddWithValue("@Count", passengerCount);
-                cmdUpdateSeats.Parameters.AddWithValue("@TrainId", trainId);
-                cmdUpdateSeats.Parameters.AddWithValue("@Class", cmbClass.SelectedItem.ToString());
-                cmdUpdateSeats.ExecuteNonQuery();
+                cmd = new SqlCommand("update Seats set AvailableSeats = AvailableSeats - @Count where TrainId = @TrainId and Class = @Class and JourneyDate = @JourneyDate", con);
+                cmd.Parameters.AddWithValue("@Count", passengerCount);
+                cmd.Parameters.AddWithValue("@TrainId", trainId);
+                cmd.Parameters.AddWithValue("@Class", classPrefix);
+                cmd.Parameters.AddWithValue("@JourneyDate", DateTime.Parse(txtJourneyDate.Text));
+                cmd.ExecuteNonQuery();
 
-                Payment payment = new Payment(userId, reservationId,trainId,sourceId,destId,cmbClass.SelectedItem.ToString(),passengerCount);
+                Payment payment = new Payment(userId, reservationId, trainId, sourceId, destId, classPrefix, passengerCount);
                 payment.Show();
                 this.Hide();
             }
@@ -224,5 +242,12 @@ namespace RailwayReservationADO
             }
         }
 
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            UserDashboard userDashboard = new UserDashboard(userId);
+            userDashboard.Show();
+            this.Hide();
+        }
     }
 }

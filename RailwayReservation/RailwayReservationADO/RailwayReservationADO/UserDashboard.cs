@@ -28,6 +28,7 @@ namespace RailwayReservationADO
 
         private void btnSearchTrain_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(UserId.ToString());
             SearchTrain searchTrain = new SearchTrain(UserId);
             searchTrain.Show();
             this.Hide();

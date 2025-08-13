@@ -40,6 +40,7 @@ namespace RailwayReservationADO
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnBookTicket = new System.Windows.Forms.Button();
             this.dgvSearchResult = new System.Windows.Forms.DataGridView();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResult)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,11 +143,22 @@ namespace RailwayReservationADO
             this.dgvSearchResult.Size = new System.Drawing.Size(913, 268);
             this.dgvSearchResult.TabIndex = 11;
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(1040, 45);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(96, 38);
+            this.btnBack.TabIndex = 12;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // SearchTrain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1164, 641);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dgvSearchResult);
             this.Controls.Add(this.btnBookTicket);
             this.Controls.Add(this.btnSearch);
@@ -179,5 +191,6 @@ namespace RailwayReservationADO
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnBookTicket;
         private System.Windows.Forms.DataGridView dgvSearchResult;
+        private System.Windows.Forms.Button btnBack;
     }
 }
