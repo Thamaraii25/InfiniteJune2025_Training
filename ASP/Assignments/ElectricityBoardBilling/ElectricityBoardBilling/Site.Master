@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ElectricityBoardBilling.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Electricity Board Billing System</title>
+    <link href="~/App_Themes/Default/Style.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div style="text-align:center; background-color:#003366; color:white; padding:15px;">
+            <h1>Electricity Board Billing</h1>
+        </div>
+        <hr />
+        <div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <hr />
+        <div style="text-align:center; background-color:#f0f0f0; padding:10px;">
+            <p>&copy; 2025 Electricity Board | All Rights Reserved</p>
+        </div>
+    </form>
+</body>
+</html>
