@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Code_Challenge_9.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Customers</h2>
+
+<p>@Html.ActionLink("Click Here To Get Customers from Germany", "CustomersBelongsToGermany")</p>
+<p>@Html.ActionLink("Click Here To Get Customer by Order ID", "CustomerByOrderId")</p>
+
+<table border="1">
+    <tr>
+        <th>Customer ID</th>
+        <th>Company Name</th>
+        <th>Contact Name</th>
+        <th>Contact Title</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Region</th>
+        <th>Postal Code</th>
+        <th>Country</th>
+        <th>Phone</th>
+        <th>Fax</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CustomerID</td>
+            <td>@item.CompanyName</td>
+            <td>@item.ContactName</td>
+            <td>@item.ContactTitle</td>
+            <td>@item.Address</td>
+            <td>@item.City</td>
+            <td>@item.Region</td>
+            <td>@item.PostalCode</td>
+            <td>@item.Country</td>
+            <td>@item.Phone</td>
+            <td>@item.Fax</td>
+        </tr>
+    }
+</table>
+
+
+

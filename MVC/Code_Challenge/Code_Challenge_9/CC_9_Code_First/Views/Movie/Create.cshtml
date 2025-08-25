@@ -1,0 +1,33 @@
+﻿@model CC_9_Code_First.Models.Movies
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Movie</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <label>Movie Id:</label>
+        @Html.TextBoxFor(m => m.Mid)
+        @Html.ValidationMessageFor(m => m.Mid)
+    </div>
+    <div>
+        <label>Movie Name:</label>
+        @Html.TextBoxFor(m => m.MovieName)
+        @Html.ValidationMessageFor(m => m.MovieName)
+    </div>
+    <div>
+        <label>Director Name:</label>
+        @Html.TextBoxFor(m => m.DirectorName)
+        @Html.ValidationMessageFor(m => m.DirectorName)
+    </div>
+    <div>
+        <label>Date of Release:</label>
+        @Html.TextBoxFor(m => m.DateOfRelease, new { type = "date" })
+        @Html.ValidationMessageFor(m => m.DateOfRelease)
+    </div>
+    <br />
+    <button type="submit">Submit</button>
+}

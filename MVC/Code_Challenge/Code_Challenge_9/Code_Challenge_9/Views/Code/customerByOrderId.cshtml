@@ -1,0 +1,28 @@
+﻿@model Code_Challenge_9.Models.Customer
+@{
+    ViewBag.Title = "customerByOrderId";
+}
+
+<h2>Customer Belongs To Order Id = 10248</h2>
+
+@if (Model != null)
+{
+<ul>
+    <li><b>Customer ID:</b> @Model.CustomerID</li>
+    <li><b>Company Name:</b> @Model.CompanyName</li>
+    <li><b>Contact Name:</b> @Model.ContactName</li>
+    <li><b>Contact Title:</b> @Model.ContactTitle</li>
+    <li><b>Address:</b> @Model.Address</li>
+    <li><b>Postal Code:</b> @Model.PostalCode</li>
+    <li><b>City:</b> @Model.City</li>
+    <li><b>Country:</b> @Model.Country</li>
+    <li><b>Phone:</b> @Model.Phone</li>
+</ul>
+}
+else
+{
+    <p>No Customer Found......</p>
+}
+
+<p>@Html.ActionLink("Back", "index")</p>
+

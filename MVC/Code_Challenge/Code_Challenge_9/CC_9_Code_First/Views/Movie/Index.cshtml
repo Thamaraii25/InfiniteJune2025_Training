@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CC_9_Code_First.Models.Movies>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Movies List</h2>
+
+<p>
+    @Html.ActionLink("Add New Movie", "Create")
+</p>
+<p>
+    @Html.ActionLink("Get Movie Released In Year", "GetYear")
+</p>
+<p>
+    @Html.ActionLink("Get Movie By Director Name", "GetDirectorName")
+</p>
+
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Director</th>
+        <th>Release Date</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var movie in Model)
+    {
+        <tr>
+            <td>@movie.MovieName</td>
+            <td>@movie.DirectorName</td>
+            <td>@movie.DateOfRelease</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = movie.Mid }) |
+                @Html.ActionLink("Delete", "Delete", new { id = movie.Mid })
+            </td>
+        </tr>
+    }
+</table>
